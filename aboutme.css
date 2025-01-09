@@ -1,0 +1,320 @@
+/* Allgemeiner Hintergrund - Schwarz */
+body {
+    background-color: #191919;
+    /* Setzt den gesamten Hintergrund auf Schwarz */
+    color: #fff;
+    /* Standard Schriftfarbe Weiß */
+}
+
+/* Container-Hintergrund für alle Bereiche (außer Navbar) */
+.container-fluid {
+    background-color: #2d2d2d;
+    /* Beibehaltung des Navbar-Hintergrunds */
+    margin-top: -20px;
+    gap: 20px;
+}
+
+/* Allgemeines Styling für die Navigation */
+.container-fluid .navbar-mymovies {
+    background-color: #2d2d2d;
+    /* Beibehaltung des Navbar-Hintergrunds */
+    padding: 1rem 0;
+    text-align: center;
+    /* Zentriert das Menü */
+}
+
+/* Styling für den "MY MOVIES"-Text */
+.navbar-mymovies a.navbar-mymovies {
+    color: #DF1B12;
+    /* Beibehaltung der roten Schriftfarbe */
+    font-family: 'Futura', 'Arial', sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    text-decoration: none;
+    /* Entfernt die Unterstreichung */
+}
+
+/* Styling für die Menü-Links */
+.navbar-mymovies .nav-link {
+    color: #DF1B12;
+    /* Beibehaltung der roten Schriftfarbe */
+    font-size: 1.2rem;
+    margin-right: 1rem;
+    /* Abstand zwischen den Links */
+    text-transform: uppercase;
+    /* Alle Buchstaben groß schreiben */
+}
+
+.navbar-mymovies .nav-link:hover {
+    color: white;
+    /* Weißer Text beim Hover */
+}
+
+/* Dropdown-Menü */
+.navbar-mymovies .dropdown-menu {
+    background-color: white;
+    /* Weißer Hintergrund */
+    border: 1.5px solid #DF1B12;
+    /* Optional: roter Rahmen */
+}
+
+/* Dropdown-Menü-Elemente */
+.navbar-mymovies .dropdown-item {
+    color: black;
+    /* Schwarze Schriftfarbe */
+}
+
+.navbar-mymovies .dropdown-item:hover {
+    color: white;
+    /* Weißer Text beim Hover */
+    background-color: #DF1B12;
+    /* Roter Hintergrund beim Hover */
+}
+
+/* Styling für das Suchfeld */
+.navbar-mymovies .form-control {
+    border: 1px solid #DF1B12;
+    /* Roter Rand */
+    color: black;
+    /* Schwarzer Text */
+    background-color: white;
+    /* Weißer Hintergrund */
+}
+
+.navbar-mymovies .btn-outline-success {
+    background-color: #DF1B12;
+    /* Roter Hintergrund */
+    color: white;
+    /* Weißer Text */
+    border: none;
+    /* Kein Rahmen */
+}
+
+.navbar-mymovies .btn-outline-success:hover {
+    background-color: white;
+    /* Weißer Hintergrund beim Hover */
+    color: #DF1B12;
+    /* Roter Text beim Hover */
+    border: 1px solid #DF1B12;
+    /* Roter Rand */
+}
+
+/* Style for the carousel container */
+.custom-carousel {
+    margin: 0 auto;
+    max-width: 70%;
+    /* Begrenzte Breite */
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Style for the images inside the carousel */
+.custom-carousel .carousel-inner img {
+    height: 600px;
+    /* Einheitliche Höhe */
+    width: 100%;
+    /* Passt die Breite an die Carousel-Breite an */
+    object-fit: cover;
+    /* Proportionales Skalieren */
+    border-radius: 10px;
+    /* Optional: Abgerundete Ecken */
+}
+
+/* Style for navigation buttons */
+.carousel-control-prev,
+.carousel-control-next {
+    position: absolute;
+    top: 50%;
+    /* Zentriert die Buttons vertikal */
+    transform: translateY(-50%);
+    /* Exakte vertikale Zentrierung */
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.2);
+    /* Heller Hintergrund */
+    border-radius: 50%;
+    /* Runde Buttons */
+    z-index: 10;
+    /* Buttons immer sichtbar */
+}
+
+.carousel-control-prev {
+    left: 5px;
+    /* Positioniert den linken Pfeil */
+}
+
+.carousel-control-next {
+    right: 5px;
+    /* Positioniert den rechten Pfeil */
+}
+
+/* Styling für die Icons */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Heller Hintergrund für bessere Sichtbarkeit */
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background-color: rgba(223, 27, 18, 0.8);
+    /* Highlight beim Hover */
+}
+
+
+
+/* Movie Cards Container */
+.movie-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px auto;
+    max-width: 80%;
+    /* Matches slider width */
+    gap: 20px;
+}
+
+/* Individual Movie Card */
+.movie-card {
+    flex: 1 1 calc(33.33% - 20px);
+    /* 3 cards per row with spacing */
+    background-color: #2d2d2d;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin: 10px 0;
+    /* Adds vertical spacing */
+}
+
+/* Movie Card Image */
+.movie-card img {
+    width: 100%;
+    height: 200px;
+    /* Adjust height to fit neatly */
+    object-fit: cover;
+    border-bottom: 2px solid #DF1B12;
+}
+
+/* Link Styling */
+.movie-card a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover Effect */
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Movie Card Info Section */
+.movie-card .movie-info {
+    padding: 15px;
+}
+
+/* Movie Title */
+.movie-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #DF1B12;
+}
+
+/* Movie Description */
+.movie-card p {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: #ffffff;
+}
+
+
+
+
+/* Footer Styles */
+.footer {
+    background-color: black;
+    padding: 20px 0;
+    color: white;
+    text-align: center;
+}
+
+.container-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0 30px;
+}
+
+/* Logo Section */
+.footer-logo-img {
+    width: 80px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Contact Info Section */
+.footer-contact a {
+    color: #00ccff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-contact a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+/* Social Media Icons */
+.footer-socials {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+    
+}
+
+.social-icon:hover{
+
+    cursor: pointer;
+
+}
+
+
+
+/* Bottom Text */
+.footer-bottom {
+    margin-top: 20px;
+    border-top: 1px solid #666;
+    padding-top: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 0px;
+}
+
+
+
+
+
+/* Adjust for Smaller Screens */
+@media (max-width: 768px) {
+    .movie-card {
+        flex: 1 1 calc(50% - 20px);
+        /* 2 cards per row for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .movie-card {
+        flex: 1 1 100%;
+        /* 1 card per row for very small screens */
+    }
+}

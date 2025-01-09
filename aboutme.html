@@ -4,60 +4,343 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My favourite series/movies on Netflix</title>
+    <title>MyMovies</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="aboutme.css">
+    <link rel="icon" type="image/x-icon" href="aboutMeImages/cat.ico"> 
+
 </head>
 
 <body>
-    <h1>My favourite series/movies on Netflix</h1>
-    <div>Hier ist das div</div>
-    <span>Hier ein Span!</span>
-    <h2>These are my top 10:</h2>
-    <h3>1.) The <u>Glory</u></h3>
-    <p>"The Glory" is a Korean drama about Moon Dong-eun, who seeks revenge on her high school bullies after years of
-        pain. <a href="https://www.netflix.com/at/title/81519223" style="color: red;" target="_blank">The Glory</a></p>
-    <h3>2.) American Psycho</h3>
-    <p>"American Psycho" is a psychological thriller about Patrick Bateman, a wealthy New York investment banker who
-        leads a double life as a serial killer. <a href="https://www.netflix.com/at/title/60000861"
-            style="color: blue;" target="_blank">American Psycho</a></p>
-    <h3>3.) Blue Eye Samurai</h3>
-    <p>"Blue Eye Samurai" is an animated series about a skilled, mixed-race swordswoman in Edo-era Japan, seeking
-        revenge while navigating a dangerous world. <a href="https://www.netflix.com/at/title/81144203"
-            style="color: aqua;" target="_blank">Blue Eye Samurai</a></p>
-    <h3>4.) Breaking Bad</h3>
-    <p><strong>Breaking Bad</strong> is a crime drama about a high school chemistry teacher turned methamphetamine
-        producer.</p>
-    <p>Walter White transforms from a humble teacher to a <s>dangerous criminal</s>. Along the way, he partners with
-        <s>Jesse Pinkman</s>, a former student. As their <u>drug empire</u> grows, Walter’s moral compass disappears.
-    </p>
-    <p>The series shows the consequences of his choices, <sup>both for him and his family</sup>.</p>
-    <a href="https://www.netflix.com/at/title/70143836" style="color: chartreuse;" target="_blank">Breaking Bad</a>
-    <h3>
-        <span style="color: black;">The</span>
-        <span style="color: red;">Godfather</span>
-    </h3>
+    <!-- NAVBAR MENU VOM BOOTSTRAPS-->
+    <nav class="navbar navbar-expand-lg navbar-mymovies">
+        <div class="container-fluid">
+            <a class="navbar-mymovies" href="#">MY MOVIES</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a style="color: white; font-weight: bold;" class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="color: white; font-weight: bold;" class="nav-link" href="#">MOVIES</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a style="color: white; font-weight: bold;" class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            SERIES
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown" id="filter-dropdown">
+                            <li><a class="dropdown-item" href="#all"data-filter="all" >All</a></li>
+                            <li><a class="dropdown-item" href="#thriller"data-filter="thriller">Thriller</a></li>
+                            <li><a class="dropdown-item" href="#kdrama"data-filter="k-drama">K-Drama</a></li>
+                            <li><a class="dropdown-item" href="#fantasy" data-filter="fantasy">Fantasy</a></li>
+                            <li><a class="dropdown-item" href="#animation" data-filter="animation">Animation</a></li>
+                            
+                            
+                            </li>
+                        
+                        </ul>
+                    </li>
+                
+                        
+                
+                </ul>
+                <form class="d-flex">
+                    <input id="search-input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                
+            </div>
+        </div>
+    </nav>
+
+    <!-- SLIDER FOR MOVIES BOOTSTR.-->
+    <div id="carouselExampleIndicators" class="carousel slide custom-carousel" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/aboutMeImages/john wick.jpg" alt="John Wick">
+            </div>
+            <div class="carousel-item">
+                <img src="/aboutMeImages/the glory.jpg" alt="The Glory Poster">
+            </div>
+            <div class="carousel-item">
+                <img src="/aboutMeImages/breaking bad.jpg" alt="Breaking Bad Poster">
+            </div>
+            <div class="carousel-item">
+                <img src="/aboutMeImages/lilo-stitch-poster.jpg" alt="Lilo & Stitch Poster">
+            </div>
+            <div class="carousel-item">
+                <img src="/aboutMeImages/blue-eye-samurai-serie-anime.webp" alt="Blue Eye Samurai Poster">
+            </div>
+            <div class="carousel-item">
+                <img src="/aboutMeImages/goT.jpg" alt="Game of Thrones">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+
+    <div class="movie-cards">
+        <!-- Card 1 -->
+        <div class="movie-card" data-category="thriller"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=5YnGhW4UEhc" target="_blank">
+                <img src="/aboutMeImages/americacn psycho.jpg" alt="American Psycho">
+                <div class="movie-info">
+                    <h3>American Psycho</h3>
+                    <p>"American Psycho" is a psychological thriller about Patrick Bateman, a wealthy New York investment banker who
+                    leads a double life as a serial killer.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 2 -->
+        <div class="movie-card" data-category="animation"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=2rrRToCVm4I" target="_blank">
+                <img src="/aboutMeImages/blue-eye-samurai-serie-anime.webp" alt="Blue Eye Samurai">
+                <div class="movie-info">
+                    <h3>Blue Eye Samurai</h3>
+                    <p>"Blue Eye Samurai" is an animated series about a skilled, mixed-race swordswoman in Edo-era Japan, seeking
+                    revenge while navigating a dangerous world.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 3 -->
+        <div class="movie-card" data-category="thriller"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=HhesaQXLuRY" target="_blank">
+                <img src="/aboutMeImages/breaking bad.jpg" alt="Breaking Bad">
+                <div class="movie-info">
+                    <h3>Breaking Bad</h3>
+                    <p>"Walter White transforms from a humble teacher to a dangerous criminal. Along the way, he partners with
+                    Jesse Pinkman, a former student. As their drug empire grows, Walter’s moral compass
+                    disappears.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 4 -->
+        <div class="movie-card" data-category="k-drama"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=tqVVrTvrI8U" target="_blank">
+                <img src="/aboutMeImages/the glory.jpg" alt="The Glory">
+                <div class="movie-info">
+                    <h3>The Glory</h3>
+                    <p>The Glory" is a Korean drama about Moon Dong-eun, who seeks revenge on her high school bullies after years
+                    of
+                    pain.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 5 -->
+        <div class="movie-card" data-category="k-drama"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=ALJ5EPWAfsc" target="_blank">
+                <img src="aboutMeImages/Squid_Game.jpg" alt="Squid Game">
+                <div class="movie-info">
+                    <h3>Squid Game</h3>
+                    <p>"Squid Game" follows 456 contestants in deadly childhood games for a chance to win 45.6 billion won. As tensions rise,
+                    the series explores greed, survival, and human desperation.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 6 -->
+        <div class="movie-card" data-category="fantasy"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=7rI56NmD33Y" target="_blank">
+                <img src="/aboutMeImages/Sweet-Home.jpg" alt="Sweet Home">
+                <div class="movie-info">
+                    <h3>Sweet Home</h3>
+                    <p>"Sweet Home" follows apartment residents fighting monstrous creatures born from human desires to survive.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 7 -->
+        <div class="movie-card" data-category="k-drama"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=MaJ7ZT70ve4" target="_blank">
+                <img src="/aboutMeImages/my-name.png" alt="My Name">
+                <div class="movie-info">
+                    <h3>My Name</h3>
+                    <p>"My Name" is a gritty Korean crime drama about a woman seeking revenge on those who murdered her father.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 8 -->
+        <div class="movie-card" data-category="thriller"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=KPLWWIOCOOQ" target="_blank">
+                <img src="/aboutMeImages/Game of Thrones.webp" alt="Game of Throes">
+                <div class="movie-info">
+                    <h3>Game of Thrones</h3>
+                    <p>"Game of Thrones" is an epic fantasy series where noble families vie for control of the Iron Throne, facing betrayal,
+                    war, and dark supernatural forces.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 9 -->
+        <div class="movie-card" data-category="fantasy"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=V75dMMIW2B4" target="_blank">
+                <img src="/aboutMeImages/Lord of the Rings.jpg" alt="Lord of the Rings">
+                <div class="movie-info">
+                    <h3>Lord of the Rings</h3>
+                    <p>"The Lord of the Rings" is an epic fantasy saga where a group embarks on a perilous journey to destroy a powerful ring
+                    and save Middle-earth from dark forces.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 10 -->
+        <div class="movie-card" data-category="fantasy"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=sBEvEcpnG7k target" target="_blank">
+                <img src="/aboutMeImages/Stranger Things.jpg"Stranger Things">
+                <div class="movie-info">
+                    <h3>Stranger Things</h3>
+                    <p>"Stranger Things" is a sci-fi thriller where a group of kids uncover government secrets and battle supernatural forces
+                    after their friend vanishes in a small town.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 11 -->
+        <div class="movie-card" data-category="animation"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=Go7jSrP2u-c" target="_blank">
+                <img src="/aboutMeImages/lilo-stitch-poster.jpg" alt="Lilo and Stitch">
+                <div class="movie-info">
+                    <h3>Lilo and Stitch</h3>
+                    <p>The live-action adaptation of Disney's beloved 2002 film follows Lilo, a lonely Hawaiian girl, and Stitch, a chaotic
+                    alien, as they explore themes of family and belonging.</p>
+                </div>
+            </a>
+        </div>
+    
+        <!-- Card 12 -->
+        <div class="movie-card" data-category="animation"> <!--data category für die filterfunktion-->
+            <a href="https://www.youtube.com/watch?v=f5CcgFTO274" target="_blank">
+                <img src="/aboutMeImages/bao and mom.jpg" alt="Bao">
+                <div class="movie-info">
+                    <h3>Bao</h3>
+                    <p>
+                    "Bao" is a heartwarming Disney Pixar short about a lonely Chinese mother who finds joy and life lessons in raising a
+                    dumpling that comes to life. It explores themes of love, family, and letting go.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+
+
+
 
     
-    <h3>6.) My Name</h3>
-    <p>"My Name" is a gritty Korean crime drama about a woman seeking revenge on those who murdered her father.</p>
-    <a href="https://www.netflix.com/at/title/81011211" style="color: orange;" target="_blank">My Name</a>
-    
-    <h3>7.) You</h3>
-    <p>"You" is a psychological thriller about a dangerously charming man with a sinister obsession with love.</p>
-    <a href="https://www.netflix.com/at/title/80211991" style="color: purple;" target="_blank">You</a>
-    
-    <h3>8.) All of Us Are Dead</h3>
-    <p>"All of Us Are Dead" is a South Korean series where high school students struggle to survive a zombie outbreak.</p>
-    <a href="https://www.netflix.com/at/title/81237994" style="color: darkred;" target="_blank">All of Us Are Dead</a>
-    
-    <h3>9.) The Witcher</h3>
-        <p>"The Witcher" is a fantasy series about Geralt of Rivia, a monster hunter navigating a dark and dangerous world.</p>
-        <a href="https://www.netflix.com/at/title/80189685" style="color: darkblue;" target="_blank">The Witcher</a>
-    
-        <h4>10.) The Haunting of Bly Manor</h4>
-        <p>"The Haunting of Bly Manor" is a gothic horror series about a young governess who starts to experience
-            supernatural events at a mysterious estate.</p>
+        
         
 
+        
+        
+
+        
+
+    
+
+    <!--JavaScript damit die Kategorien funktionieren-->
+    <script>
+        document.getElementById('filter-dropdown').addEventListener('click', function (e) {
+            e.preventDefault();
+            const filter = e.target.getAttribute('data-filter');
+
+            const cards = document.querySelectorAll('.movie-card');
+
+            cards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+
+
+<script>
+    function searchMovies() {
+        const searchInput = document.getElementById('search-input').value.toLowerCase();
+        const cards = document.querySelectorAll('.movie-card');
+
+        cards.forEach(card => {
+            const title = card.querySelector('h3').textContent.toLowerCase();
+            const description = card.querySelector('p').textContent.toLowerCase();
+
+            if (title.includes(searchInput) || description.includes(searchInput)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+
+
+
+<footer class="footer">
+    <div class="container-footer">
+        <!-- Linke Seite: Logo -->
+        <div class="footer-logo">
+            <img src="aboutMeImages/Remove-bg.ai_1735904118323.png" alt="MyMovies Logo" class="footer-logo-img">
+        </div>
+        <!-- Mitte: Kontaktinfo -->
+        <div class="footer-contact">
+            <p>Contact me: <a href="mailto:didem.peker@example.com">didem.peker@example.com</a></p>
+        </div>
+        <!-- Rechte Seite: Soziale Medien Symbole -->
+        <div class="footer-socials">
+            <img src="aboutMeImages/facebook logo.png" alt="Facebook" class="social-icon">
+            <img src="aboutMeImages/Instagram.png" alt="Instagram" class="social-icon">
+            <img src="aboutMeImages/Tiktok.png" alt="TikTok" class="social-icon">
+            <img src="aboutMeImages/Youtube.png" alt="YouTube" class="social-icon">
+        </div>
+    </div>
+    <!-- Copyright Info -->
+    <div class="footer-bottom">
+        <p>@2024 Mymovies.com All rights reserved. MyMovies is made by Didem Peker</p>
+        
+    </div>
+</footer>
+
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
