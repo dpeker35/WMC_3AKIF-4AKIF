@@ -1,28 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!--Definiert den Dokumenttyp als HTML5.-->
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyMovies</title>
+<head> <!-- Metadaten-Bereich des Dokuments. Enthält Informationen wie Titel und Verlinkungen.-->
+    <meta charset="UTF-8"> <!--alle Zeichen im UTF-8-Format kodiert  (wichtig für Sonderzeichen!!).-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!--Stellt sicher, dass die Webseite auf verschiedenen Geräten (Desktop, Smartphone) korrekt dargestellt wird-->
+    <title>MyMovies</title> <!--title MyMovies ist in Browser-Registerkarte  ersichtlich!-->
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!--Verlinkung zur Bootstrap-Stylesheet-Datei, um vordefinierte CSS-Stile und Layouts zu verwenden!!-->
 
-    <!-- Link to external CSS -->
+    <!-- Link to external CSS den ich selbst erstellt habe! -->
     <link rel="stylesheet" href="aboutme.css">
-    <link rel="icon" type="image/x-icon" href="aboutMeImages/cat.ico"> 
+    <link rel="icon" type="image/x-icon" href="aboutMeImages/cat.ico">  <!--zeigt mein logo in der Browser-Registerkarte an-->
 
 </head>
 
-<body>
+
+<body> <!--Beginn des sichtbaren Inhalts dieser Webseite.-->
+
     <!-- NAVBAR MENU VOM BOOTSTRAPS-->
     <nav class="navbar navbar-expand-lg navbar-mymovies">
-        <div class="container-fluid">
-            <a class="navbar-mymovies" href="#">MY MOVIES</a>
+        <div class="container-fluid"> <!--container-fluid heisst über die ganze Breite, mittig etc. wäre auch möglich-->
+            <a class="navbar-mymovies" href="#">MY MOVIES</a> <!--Ein Hyperlink mit dem Namen „MY MOVIES“. # bedeutet, dass der Link aktuell nirgendwohin führt.-->
+            <!--a tag ist zum verlinken auf anderen Seite einer Webseite, oder Verlinken innerhalb der gleichen Seite-->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
                 aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+
+                <!--Ein Toggler ist ein Button (Schaltfläche), der benutzt wird, um das Menü auf kleinen Bildschirmen ein- und auszublenden-->
+                <!--Im Bootstrap heisst es Hamburger Menü, sind 3 horizontale Striche!-->
+                <!--data-bs-toggle="collapse": Dieses Attribut sagt Bootstrap, dass es eine Kollaps-Animation anwenden soll (also das Menü ein- oder ausblendet).-->
+                <!--data-bs-target="#navbarScroll":Gibt an, welches Element der Toggler auf- und zuklappen soll (hier die Navigation mit der id="navbarScroll").-->
+
                 <span class="navbar-toggler-icon"></span>
+                <!-- Span Element wird verwendet um einen  bestimmten Teil des Textes oder Elements zu formatieren oder zu stylen.-->
+                 <!--anders als <div> (Block-Element) beeinflusst <span> das Layout nicht, es bleibt in der gleichen Zeile -->
+                    <!--navbar-toggler-icon ist eine vordefinierte Bootstrap-Klasse.
+                    Sie sorgt dafür, dass der Browser drei horizontale Linien (☰) anzeigt – das sogenannte Hamburger-Symb-->
+                    
             </button>
             <div class="collapse navbar-collapse" id="navbarScroll">
                 <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
@@ -43,6 +58,13 @@
                             <li><a class="dropdown-item" href="#kdrama"data-filter="k-drama">K-Drama</a></li>
                             <li><a class="dropdown-item" href="#fantasy" data-filter="fantasy">Fantasy</a></li>
                             <li><a class="dropdown-item" href="#animation" data-filter="animation">Animation</a></li>
+
+                            <!--<ul>-Tag erstellt eine unsortierte Liste, also eine Liste mit Aufzählungspunkten (Bullet Points).
+    Verwendung: Das <ul>-Tag dient als Container für die einzelnen Listenelemente <li>.
+    <li> (Listeneintrag)
+    Das <li>-Tag repräsentiert ein einzelnes Element in einer Liste (egal ob geordnet oder ungeordnet).
+    Verwendung: Wird innerhalb von <ul> oder <ol> benutzt, um Einträge hinzuzufügen.
+    Es kann Text, Links, Bilder oder andere HTML-Elemente enthalten.-->
                             
                             
                             </li>
@@ -317,7 +339,7 @@
     <div class="container-footer">
         <!-- Linke Seite: Logo -->
         <div class="footer-logo">
-            <img src="aboutMeImages/Remove-bg.ai_1735904118323.png" alt="MyMovies Logo" class="footer-logo-img">
+            <img src="aboutMeImages/mymovieslogo.png" alt="MyMovies Logo" class="footer-logo-img">
         </div>
         <!-- Mitte: Kontaktinfo -->
         <div class="footer-contact">

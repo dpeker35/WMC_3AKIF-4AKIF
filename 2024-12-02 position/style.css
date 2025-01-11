@@ -12,7 +12,7 @@ body{
 
     display: flex; /* webseite wird elastischer gezeigt, befindet sich neben logo*/
     justify-content: space-between; 
-    align-items: center; 
+    align-items: center; /*Vertikale Zentrierung*/
     padding: 20px 40px; /* abstände zwischen den elementen features etc. */
 
 
@@ -25,18 +25,19 @@ body{
 
 .nav-links{
     list-style: none; /* wenn ich nichts schreibe nimmt er einen default wert für den style*/
-    display: flex; 
+    display: flex; /* webseite wird elastischer gezeigt, befindet sich neben logo*/
     gap: 20px; /* die abstände zwischen den elements der navbar*/
-    margin: 0;
-    padding: 0;
+    margin: 0; /*bedeutet, dass der Abstand zu anderen Elementen komplett entfernt wird.*/
+    padding: 0; /*bedeutet, dass der Abstand zwischen Inhalt und dem Rand des Elements entfernt wird.*/
 }
 
 .nav-links a{
-    text-decoration: none; /* dlöscht die underlines bei den elementen wegen dem href*/
-    font-size: 16px;
+    text-decoration: none; /* löscht die underlines bei den elementen wegen dem href*/
+    font-size: 16px; /*bedeutet also, dass die Schrift 16 Bildschirmpixel hoch ist*/
     color: #008060; /* ändert die farbe der schriftart vom navbar elemente*/
     font-weight: 600; /* font weigt macht die schriftart dicker*/
-    transition: color 0.3s;
+    transition: color 0.3s; /*bedeutet, dass die Textfarbe über 0,
+        3 Sekunden hinweg animiert wird.*/
     
 }
 
@@ -51,9 +52,9 @@ body{
 }
 
 .btn{ /* die reihenfolge ist hier nicht unbedingt notwendig*/
-    text-decoration: none;
+    text-decoration: none; /* löscht die underlines bei den elementen wegen dem href*/
     color: #008060;
-    padding: 8px 16px;
+    padding: 8px 16px;  /*bedeutet 8 Pixel Abstand oben/unten und 16 Pixel Abstand links/rechts.*/
     border: 1px solid #008060; /* die dicke des rahmens vom Sign up button*/
     border: bold;
     border-radius: 0px;
@@ -126,7 +127,7 @@ body{
 .left-content {
     width: 35%;
     margin-top: 80px;
-    /* Ortadaki karttan biraz aşağıda */
+    /* Mittlere  Karte bisschen unten */
     position: relative;
     left: 100px;
     margin-left: 65px;
@@ -154,11 +155,11 @@ body{
     color: #000;
     margin-bottom: 10px;
     max-width: 200px;
-    /* Satır uzunluğunu sınırlama */
+    /* Begrenzung der Zeilenlänge*/
     text-align: left;
-    /* Sol hizalama */
+    /* links einrichtung */
     word-wrap: break-word;
-    /* Uzun metinleri bölmek için */
+    /* Um lange Texte zu unterteilen. */
 }
 
 .left-content p {
@@ -187,126 +188,106 @@ body{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Ortadaki Kart */
-/* Ortadaki Kart */
+
+/* Mittlere Karte */
 .recommended-card {
     position: relative;
     background-color: #ffffff;
     border: 1px solid #00a676;
-    /* Yeşil çerçeve */
+    /* Grüner Rahmen */
     border-radius: 8px;
-    /* Genel kart kenar yuvarlama */
+    /* Allgemein Karte Rundung  */
     padding: 20px 30px;
-    /* Kartın iç boşlukları */
+    /* Der Innenabstand der Karte.*/
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-    /* Hafif gölge /     /*changed/
-  transform: translateY(-10px); /* Öne çıkma efekti */
+    /* leichter schatten /     /*changed/
+  transform: translateY(-10px); /* efekti das es nach vorne raussticht */
     z-index: 10;
-    /* Üstte görünsün */
+    /* oben sichtbar */
     width: 10px;
-    /* Kart genişliği */
+    /* breite der karte */
     margin: 0 auto;
-    /* Ortalanmış */
+    /* zentriert */
     margin-left: 0px;
     vertical-align: top;
-    /* Üstten hizalama */
+    /* oben eingerichtet */
     height: 520px;
 
 }
 
 .recommended-header {
     background-color: #00a676;
-    /* Canlı yeşil ton */
     color: #ffffff;
-    /* Beyaz yazı */
     font-weight: bold;
-    /* Kalın yazı */
+    /* dicke schrift */
     font-size: 14px;
-    /* Yazı boyutu */
     text-transform: uppercase;
-    /* Büyük harf */
+    /* Große Buchstaben */
     padding: 5px 0;
-    /* Üst-alt boşluk */
+    /* Oben-unten Abstand */
     text-align: center;
-    /* Ortalanmış yazı */
+    /* zentrierter texr */
     border-radius: 8px 8px 0 0;
-    /* Sadece üst kenarları yuvarlat */
+    /* nur oberen rand runder machen */
     margin: 0;
-    /* Kenar boşluklarını sıfırla */
+    /* außen abstände 0 */
     width: 100%;
-    /* Tam genişlik */
     box-sizing: border-box;
-    /* Padding dahil genişlik ayarı */
+    /* Padding inkludiert breite einstellung */
     position: absolute;
-    /* Kartın en üstüne yapışmasını sağlar */
+    /* damit es oben auf der karte drauf pickt */
     top: 0;
-    /* Kartın en üstüne sabitle */
+    /* fixiere oben auf der Karte */
     left: 0;
-    /* Sol kenara hizala */
+
 }
 
 .recommended-card-content {
     margin-top: 50px;
     margin-left: 0px;
-    /* Başlığın altındaki içerik için boşluk */
+    /* Abstand für den Inhalt unter der Überschrift. */
 }
 
 .card-title {
     font-size: 28px;
-    /* Büyük yazı */
     font-weight: bold;
-    /* Kalın yazı */
     color: #008060;
-    /* Yeşil renk */
     text-align: center;
-    /* Ortalanmış */
     margin: 15px 0;
-    /* Üst ve alt boşluk */
     line-height: 1.2;
-    /* Satır yüksekliği */
+    /* Zeilen Höhe */
 }
 
 .price {
     font-size: 18px;
-    /* Orta boy yazı */
     font-weight: normal;
     color: #555555;
-    /* Gri renk */
     text-align: center;
-    /* Ortalanmış */
     margin: 10px 0 20px;
-    /* Alt boşluk */
 }
 
 .btn-green {
     display: block;
-    /* Tam genişlik için */
+    /* genaue breite */
     background-color: #1EE474;
-    /* Yeşil arka plan */
     color: #555;
-    /* Siyah yazı */
     text-align: center;
     padding: 8px 8px;
-    /* Buton boyutları */
+    /* Button grösse*/
     border-radius: 0;
-    /* Köşeleri köşeli */
+    /* Rand eckiger machen */
     font-size: 16px;
-    /* Yazı boyutu */
     font-weight: bold;
-    /* Kalın yazı */
     text-decoration: none;
-    /* Alt çizgi yok */
     margin: 0 auto;
-    /* Tam ortalamak için */
     max-width: 100px;
-    /* Buton genişliği */
     cursor: pointer;
-    /* Tıklanabilir işaretçi */
+    /* zeigt einen finger wenn man mit der maus drauffährt */
 }
 
 .btn-green:hover {
     background-color: #006b4f;
-    /* Daha koyu yeşil hover efekti */
+
 }
 
 .card-subtitle {
@@ -314,9 +295,7 @@ body{
     font-size: 10px;
     font-weight: bold;
     color: black;
-    /* Gri yazı */
     text-transform: uppercase;
-    /* Büyük harf */
     margin: 20px 0;
 }
 
@@ -329,27 +308,23 @@ body{
 .recommended-card ul li {
     font-size: 14px;
     color: #333333;
-    /* Koyu gri yazı */
     margin-bottom: 10px;
-    /* Elemanlar arası boşluk */
+    /* Abstände zwischen den Elementen */
 }
 
 .checklist {
     list-style: none;
-    /* Varsayılan liste stilini kaldır */
+    /* keine aufzählungen */
     padding: 0;
-    /* İç boşluğu sıfırla */
+    /* mach den inneren abstand auf 0 */
     margin: 0;
-    /* Dış boşluğu sıfırla */
+    /* äußerer abstand auf 0 */
 }
 
 .checklist li {
     font-size: 10px;
-    /* Yazı boyutu */
     color: #555555;
-    /* Açık gri renk */
     margin-bottom: 10px;
-    /* Liste elemanları arasına boşluk ekle */
     padding-left: 25px;
     /* Tik ikonu ile yazı arasında boşluk */
     position: relative;
@@ -358,23 +333,25 @@ body{
 
 .checklist li::before {
     content: "✔";
-    /* Tik simgesi */
+    /* Tik symbol */
     color: #00a676;
-    /* Yeşil renk */
     font-weight: bold;
-    /* Kalın tik işareti */
     position: absolute;
-    /* Konumlandırma için */
     left: 0;
-    /* Yazının hemen başına yerleştir */
+    /* genau neben dem text */
     top: 0;
-    /* Yazı ile hizala */
+  
 }
 
-/*SAĞ KART*/
+/*Rechte Karte*/
 .pricing-card {
     background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /*fügt einen weichen,
+        leicht transparenten schwarzen Schatten hinzu,
+        der nach unten verschoben ist.*/
+        /*teht für Rot-Grün-Blau mit Alpha-Wert (Transparenz).*/
+       /* 0.1 bedeutet,
+            dass der Schatten nur 10% Deckkraft hat und daher kaum sichtbar ist.*/
     border-radius: 8px;
     width: 360px;
     padding: 20px;
@@ -382,7 +359,7 @@ body{
     box-sizing: border-box;
     margin-top: 50px;
     margin-left: 0;
-    /* Sağ tarafa hizala */
+
 
 }
 
@@ -391,9 +368,9 @@ body{
     color: #888;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    /* Çizgiyle metin arasında boşluk */
+    /* Abstand zwischen strich und paragraph */
     border-bottom: 1px solid #ddd;
-    /* Çizginin rengi ve kalınlığı */
+    /* strich farbe und dick */
 }
 
 h1 {
@@ -461,7 +438,7 @@ h1 {
 
 
 
-/* Alt Kısım - Logo ve Yazılar */
+/* Unteret Teil - Logo und Text */
 .pricing-footer {
     margin-top: 60px;
     text-align: center;
@@ -522,88 +499,78 @@ h1 {
     line-height: 1.6;
 }
 
-/* Footer Genel */
+/* Footer Allgemein */
 .footer {
     background-color: #0b0d17;
-    /* Logo arka planıyla aynı renk */
     color: #00ff85;
-    /* Yazı rengi */
     padding: 40px 80px;
-    /* Genel iç boşluk */
     font-family: Arial, sans-serif;
     position: relative;
 }
 
-/* Footer Ana Konteyner */
+/* Footer Main Container */
 .footer-container {
     display: flex;
     justify-content: space-between;
-    /* Elemanları yatayda ayır */
+    /* Teile die Elemente horizontal auf. */
     align-items: flex-start;
-    /* Dikeyde hizala */
+    /* vertikal einrichten */
     flex-wrap: wrap;
-    /* Mobil için sarma */
+    /* einrichten für Mobile */
     gap: 20px;
 }
 
-/* Sol Logo ve Buton */
+/* Linker Logo und Button  */
 .footer-logo-section {
     display: flex;
     flex-direction: column;
-    /* Dikey hizalama */
     align-items: flex-start;
-    /* Sol hizalama */
+
 }
 
 .footer-logo {
     height: 100px;
-    /* Logonun boyutu */
+    /* grösse logo*/
     margin-bottom: 20px;
 }
 
 .trial-button {
     background-color: #00ff85;
-    /* Yeşil arka plan */
     color: #111;
-    /* Siyah yazı */
     padding: 12px 30px;
-    /* Buton boyutları */
     font-size: 14px;
-    /* Yazı boyutu */
     font-weight: bold;
     border: none;
     border-radius: 5px;
-    /* Hafif yuvarlatma */
     cursor: pointer;
     transition: background-color 0.3s ease;
+    /*bewirkt, dass sich die Hintergrundfarbe eines Elements über 0,
+        3 Sekunden hinweg sanft und gleichmäßig ändert.*/
 }
 
 .trial-button:hover {
     background-color: #00cc6e;
-    /* Hover efekti */
+    /* Hover effekt */
 }
 
-/* Orta Menü Linkleri */
+/* Mittleres Menü Links */
 .footer-links {
     display: flex;
     justify-content: center;
-    /* Ortala */
+    /* zentriere */
     gap: 40px;
-    /* Kolonlar arası boşluk */
+    /* abstände zwischen spalten */
     padding: 0 200px;
 }
 
 .footer-column h3 {
     font-size: 16px;
-    /* Başlık boyutu */
     margin-bottom: 10px;
     color: #ffffff;
-    /* Beyaz başlık */
 }
 
 .footer-column ul {
     list-style: none;
-    /* Varsayılan listeyi kaldır */
     padding: 0;
     margin: 0;
 }
@@ -615,77 +582,63 @@ h1 {
 .footer-column a {
     text-decoration: none;
     color: #00ff85;
-    /* Yeşil yazı */
 }
 
 .footer-column a:hover {
     text-decoration: underline;
-    /* Alt çizgi hover */
 }
 
 .contact-button-container {
     position: absolute;
-    /* Sabit konumlandırma */
+    /* fixiere */
     bottom: 30px;
-    /* Alt kenardan mesafe */
+    /* unterer abstand */
     right: 30px;
-    /* Sağ kenardan biraz mesafe bırak */
+    /* rechte seite ein wenig abstand */
 }
 
 .contact-button {
     font-size: 16px;
-    /* Yazı boyutunu büyüt */
     padding: 12px 24px;
-    /* İç boşlukları düzenle */
     background-color: #01AD6A;
-    /* Yeşil arka plan */
     border: 2px solid #ffffff;
-    /* Beyaz çerçeve */
+    /* weisser rahmen */
     color: #ffffff;
-    /* Beyaz yazı rengi */
     cursor: pointer;
-    /* İmleç değişimi */
     transition: all 0.3s ease-in-out;
-    /* Yumuşak geçiş efekti */
     font-weight: bold;
 }
 
 .contact-button:hover {
     background-color: #ffffff;
-    /* Beyaz arka plan hover */
     color: #00ff85;
-    /* Yeşil yazı hover */
     border: 2px solid #00ff85;
-    /* Yeşil çerçeve hover */
 }
 
-/* Footer Alt Yazılar */
+/* Footer Unterer Text */
 .footer-bottom {
     text-align: left;
-    /* Sol hizalama */
     font-size: 12px;
-    /* Yazı boyutu */
     color: #444;
-    /* Tek renk (fotoğraftaki koyu gri ton) */
     margin-top: 100px;
 }
 
 .footer-bottom a {
     text-decoration: none;
     color: #444;
-    /* Linkler de aynı renkte */
+   
 }
 
 .footer-bottom a:hover {
     text-decoration: underline;
-    /* Hover sırasında sadece alt çizgi */
+   
 }
 
 
-/* Responsive Tasarım */
+/* Responsive Design*/
 @media screen and (max-width: 1200px) {
 
-    /* Daha küçük tabletler ve büyük telefonlar */
+    /* für kleine tablets und grosse handys*/
     .navbar {
         flex-wrap: wrap;
         justify-content: center;
@@ -717,7 +670,6 @@ h1 {
 
     .recommended-card {
         transform: translateY(0);
-        /* Öne çıkma efekti kaldırıldı */
         width: 100%;
         height: auto;
         margin: 20px 0;
@@ -726,7 +678,7 @@ h1 {
 
 @media screen and (max-width: 768px) {
 
-    /* Daha küçük ekranlar ve mobil cihazlar */
+    /* für kleinere screens */
     .navbar {
         flex-direction: column;
         align-items: center;
@@ -777,7 +729,7 @@ h1 {
 
 @media screen and (max-width: 480px) {
 
-    /* Küçük telefonlar */
+    /* kleine handys*/
     .navbar {
         padding: 10px 15px;
     }

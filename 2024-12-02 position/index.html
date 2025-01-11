@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pulse _Website</title> <!-- im title sieht man den namen was im tab steht zb au firefox-tab -->
+    <title>Pulse _Website</title> <!-- im title sieht man den namen was im tab steht zb im firefox-tab -->
     <link rel="stylesheet" href="style.css"> <!-- css muss hier eingebunden werden damit es ein ganzes wird, muss immer im head drinnen sein 
     ist ein self-closing tag 
     rel (relationship) bezieht sich auf den Link style.css (stylesheet für dieses html dokument)-->
 </head>
 
 <body> <!-- hier macht man die Webseite selbst, also im body drinnen-->
-    <nav class="navbar">
+    <nav class="navbar"> <!--Mithilfe von CSS kann man mit einer class spezifische Stile zuweisen.-->
         <div class="logo">
             <a href="#"><img src="pulse_logo.png" alt="Pulse Logo"></a> <!-- # mit HASH geht es zum anfang der webseite-->
-           <!-- alt ist dafür, falls man das logo nicht sieht, dan steht etwas anderes dort zb pulse logo-->
+           <!-- alt ist dafür, falls man das logo nicht sieht, dann steht etwas anderes dort zb pulse logo-->
         </div>
        <ul class="nav-links">
 
@@ -23,6 +23,9 @@
         <li><a href="#">Blog</a></li>
         <li><a href="#"  class="btn">Sign Up</a></li>
         <!-- mit li listet man die sich mit aufzählungen zb 1. 2. 3... etc.-->
+         <!--<li>: Definiert ein Listenelement innerhalb einer ungeordneten Liste (<ul>) oder einer geordneten Liste (<ol>).
+        <a href="#">: Ein Hyperlink-Tag, bei dem href="#" als Platzhalter dient. Das # bedeutet „Verlinkung zum selben Dokument“ oder „kein echtes Ziel“.
+        Features: Der sichtbare Text des Links.-->
      </ul>
     </nav> <!-- mit class definiere ich die klasse dieses tags-->
     <!--comment-->
