@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primzahlen-Kontroller</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box; 
+        
+    }
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        background-color: #1e1e2e;
+        color: white;
+        overflow: hidden;
+
+    }
+
+    h2{
+        margin-top: 50px;
+        font-size: 32px;
+
+    }
+
+    .container{
+        margin-top: 20px;
+        position: relative;
+
+
+    }
+
+    input{
+        padding: 12px;
+        font-size: 18px;
+        width: 150px;
+        border: none;
+        border-radius: 5px;
+        outline: none;
+        text-align: center;
+    }
+
+    button{
+        padding: 12px 18px;
+        font-size: 18px;
+        cursor: pointer;
+        border: none;
+        background: linear-gradient(45deg, #ff512f, #dd2476);
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: 0.3s;  /*3.s bei der farbänderung*/
+    }
+
+
+    button:hover{
+        background: linear-gradient(45deg, #dd2476, #ff512f);
+        transform: scale(1.05);
+
+    }
+
+
+    #result{ /*hash benuntz man weil es eine ID ist*/
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        padding: 12px;
+        display: inline-block;
+        border-radius: 10px;
+        transition: 0.3s;
+
+    }
+
+
+    .prime{  /*für script prime funktion*/
+        background-color: green; /*wenn primzahl*/
+        color: white;
+        box-shadow: 0 0 15px green;
+
+
+    }
+
+
+    .not-prime{
+
+         background-color: red; /*wenn keine primzahl*/
+        color: white;
+        box-shadow: 0 0 15px red;
+
+    }
+
+
+    .number{ /*für die fliegenden zahlen im hintergrund*/
+        position: absolute;
+        font-size: 30px;
+        font-weight: bold;
+        animation: floatNumbers linear infinite;
+
+    }
+
+
+    @keyframes floatNumbers{
+        from{
+            transform: translateY(100vh); /*von unten aus soll 100 anfangen*/
+            opacity: 1; /* damit es bisschen verschwommen wird*/
+        }   
+        to{
+            transform: translateY(-10vh);
+            opacity: 0;
+        }
+    
+    }
+
+
+
+</style>
+
+</head>
+<body>
+
+    <h2>
+        Primzahlen-Kontroller
+    </h2>
+
+    <div class="container">
+        <input type="number" id="numberInput" placeholder="Gib eine Zahl ein">
+        <button onclick="checkPrime()" >
+            Gib eine Zahl ein
+        </button>
+    </div>
+
+    <div id="result"></div>
+
+
+    <script>
+        function isPrime(num) {
+            if(num < 2) //wenn zahl kleiner als 2
+            return false;
+        for(let i = 2; i<=Math.sqrt(num); i++) //let fixiert die Zahl, math.sqer kontrolliert ob man die wurzel ziehen kann
+        {
+            if(num % i === 0)
+            return false;
+        }
+        return true; //true heisst ist eine Primzahl
+        }
+
+        function checkPrime() { //kein Parameter notwendig
+        let input = document.getElementById("numberInput").value; //zeige mir den Wert der zu dieser ID gehört (siehe oben 14.Zeile)
+
+        let resultDiv = document.getElementById("result"); //siehe Zeile 21
+        let number = parseInt(input); //parseInt ist wie zb wenn ich String ins int umwandeln würde
+        if(isNaN(number)) { //kontrolliert ob int oder nicht
+
+            resultDiv.innerHTML = "Bitte gebe eine gültige Zahl ein!";
+
+            resultDiv.className = ""; //leer lassen weil falls primzahl oder nicht, um hier auszugeben..
+
+            return;
+         } 
+
+         if(isPrime(number)) {
+            resultDiv.innerHTML = 'Primzahl'; //zeigt das Ergebnis
+            resultDiv.className = "prime";
+            }
+            else{
+                resultDiv.innerHTML = 'keine Primzahl';
+                resultDiv.className = "not-prime";
+
+            }
+        }
+
+
+        function getRandomColor() {
+                const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A8", "#FFD700", "#8A2BE2", "#00FFFF", "#DC143C"];
+                return colors[Math.floor(Math.random() * colors.length)];
+            }
+
+
+          function createFloatingNumbers() {
+                setInterval(() => {
+                    let number = document.createElement("div");
+                    number.classList.add("number");
+                    number.innerText = Math.floor(Math.random() * 100); //zeig zahlen von 1-100
+                    number.style.left = Math.random() * window.innerWidth + "px";
+                    number.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                    number.style.color = getRandomColor(); // Renkler rastgele seçilecek
+                    document.body.appendChild(number);
+
+                    setTimeout(() => {
+                        number.remove();
+                    }, 5000);
+                }, 300);
+            }
+
+
+            createFloatingNumbers();
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

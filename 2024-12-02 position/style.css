@@ -6,7 +6,8 @@ body{
     }
 
 
-/*navbar: alle klassen mit einem Punkt öffnen .*/
+/*navbar: 
+(alle klassen mit einem Punkt öffnen .*/
 
 .navbar{
 
@@ -62,6 +63,7 @@ body{
     font-weight: 700;
     margin-left: 10px;
     transition: background-color 0.3s ease, color 0.3 ease;
+    /*Hintergrundfarbe und Textfarbe eines Elements fließend über 0.3 Sekunden,anstatt abrupt zu wechseln*/
 
 }
 
