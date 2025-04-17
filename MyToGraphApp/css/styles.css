@@ -1,0 +1,224 @@
+/* css/styles.css */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Temel Sıfırlama */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/*body {
+    background: radial-gradient(circle at 20% 30%, #1a1b2f, #0b0c1a);
+    color: #ffffff;
+    font-family: 'Fira Code', monospace;
+}
+    */
+body {
+    background: url('../assets/images/space_bg.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Fira Code', monospace;
+    color: #ffffff;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2A2A3B;
+    /* a bit lighter than body */
+    color: #FFFFFF;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid #3A3A4D;
+    /* subtle bottom line */
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: #ffffff !important;
+    font-size: 1.5rem;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff !important;
+    font-weight: 500;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffdcdc !important;
+    /* Hover için daha açık bir ton */
+}
+
+/* Logo Görseli */
+.logo-img {
+    height: 40px;
+    /* İsteğe bağlı boyut */
+    width: auto;
+}
+
+
+
+/* Dark container like in the screenshot */
+.container {
+    background-color: rgba(20, 20, 35, 0.8);
+    /* dark glassy */
+    border-radius: 12px;
+    padding: 100px;
+    max-width: 800px;
+    margin: 50px auto;
+    box-shadow: 0 0 25px rgba(0, 255, 100, 0.1);
+}
+
+
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #39FF14;
+    margin-bottom: 50px;
+}
+
+/* To-Do Listesi */
+/* Form ve input alanları */
+#todo-form {
+    margin-bottom: 20px;
+}
+
+#todo-input {
+    border-radius: 0.25rem 0 0 0.25rem;
+    border: 2px solid #b30000;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#todo-input:focus {
+    outline: none;
+    border-color: #ff2b2b;
+    /* Daha canlı kırmızı */
+    background-color: #fff;
+}
+
+.btn-primary {
+    background-color: #b30000;
+    border-color: #b30000;
+    font-weight: 600;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+}
+
+/* Yapılacaklar listesi elemanları */
+.list-group-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    border-radius: 0.25rem;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.list-group-item:hover {
+    background-color: #ffe5e5;
+    /* Hafif kırmızı ton */
+}
+
+/* Butonlardaki ikonlar */
+.btn-icon {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    margin-right: 4px;
+    /* Metinle arada küçük boşluk */
+    vertical-align: middle;
+}
+
+/* Matris Hesaplama Bölümü */
+#matrix-section {
+    margin-top: 40px;
+}
+
+#matrix-operation {
+    border: 2px solid #b30000;
+    border-radius: 0.25rem;
+    padding: 8px;
+    background-color: #f9f9f9;
+    color: #333;
+    font-weight: 500;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#matrix-operation:focus {
+    outline: none;
+    border-color: #ff2b2b;
+    background-color: #fff;
+}
+
+#matrix-inputs input {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #b30000;
+    border-radius: 0.25rem;
+    background-color: #f9f9f9;
+    color: #333;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+#matrix-inputs input:focus {
+    outline: none;
+    border-color: #ff2b2b;
+    background-color: #fff;
+}
+
+#calculate-matrix {
+    background-color: #b30000;
+    border-color: #b30000;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    color: #fff;
+}
+
+#calculate-matrix:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
+}
+
+#matrix-result {
+    padding: 15px;
+    background-color: #fff;
+    border: 2px solid #b30000;
+    border-radius: 0.25rem;
+    margin-top: 15px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Responsive Tasarım */
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.25rem;
+    }
+
+    .container {
+        margin-top: 20px;
+        padding: 15px;
+    }
+
+    #matrix-section {
+        margin-top: 20px;
+    }
+}
