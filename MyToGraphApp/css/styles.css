@@ -207,18 +207,201 @@ h2 {
     color: #333;
 }
 
-/* Responsive Tasarım */
-@media (max-width: 576px) {
-    .navbar-brand {
-        font-size: 1.25rem;
-    }
-
-    .container {
-        margin-top: 20px;
-        padding: 15px;
-    }
-
-    #matrix-section {
-        margin-top: 20px;
-    }
+/* 1. Ortadaki içerik bloğu: sol/sağ 260px boşluk bırakarak */
+.main-content {
+    margin: 1rem 280px;
+    background: #fff;
+    border-radius: .5rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    min-height: calc(100vh - 80px);
 }
+
+/* Ortak widget stili */
+.widget-panel {
+    position: fixed;
+    width: 220px;
+    background: #fff;
+    border-radius: .75rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    font-size: 0.9rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow: hidden;
+}
+
+/* Başlıklara renkli alt çizgi */
+.widget-panel h5 {
+    margin: 0;
+    font-size: 1.1rem;
+    position: relative;
+    padding-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.widget-panel h5::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+/* İnput ve butonlar */
+.widget-panel input,
+.widget-panel button {
+    width: 100%;
+    border-radius: 0.375rem;
+}
+
+.widget-panel button {
+    font-weight: 500;
+}
+
+/* ===== Sol Üst: APOD ===== */
+#apod-panel {
+    top: 80px;
+    left: 1rem;
+    color: #ffdd57;
+    border-top: 3px solid #ffdd57;
+    max-height: 320px;
+}
+
+#apod-panel h5 {
+    color: #ffdd57;
+}
+
+#apod-panel button {
+    background: #1e3a8a;
+    color: #fff;
+    border: none;
+}
+
+#apod-panel button:hover {
+    background: #16215d;
+}
+
+#apod-panel #apod-result {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 0.5rem;
+}
+
+#apod-panel img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Sol Alt: Mars Rover ===== */
+#mars-panel {
+    top: 450px;
+    left: 1rem;
+    color: #ffa500;
+    border-top: 3px solid #ffa500;
+    max-height: 320px;
+}
+
+#mars-panel h5 {
+    color: #ffa500;
+}
+
+#mars-panel button {
+    background: #047857;
+    color: #fff;
+    border: none;
+}
+
+#mars-panel button:hover {
+    background: #065f46;
+}
+
+#mars-panel #mars-result {
+    flex: 1;
+    overflow-y: auto;
+    margin-top: 0.5rem;
+}
+
+#mars-panel img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ─────────────────────────────────────────────
+   📰 NASA Haberleri Paneli
+───────────────────────────────────────────── */
+#news-panel {
+    top: 80px;
+    /* Navbar’ın hemen altında */
+    right: 1rem;
+    /* Sağdan 1rem */
+    width: 260px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    padding: 1rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    border-top: 4px solid #444;
+    /* koyu gri çizgi */
+    position: fixed;
+    z-index: 1000;
+}
+
+#news-panel h5 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 0.75rem;
+    position: relative;
+}
+
+#news-panel h5::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 40px;
+    height: 4px;
+    background: #444;
+    border-radius: 2px;
+}
+
+#news-result a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+/* ===== Responsive (dar ekran) ===== */
+@media (max-width: 1500px) {
+    .widget-panel {
+        position: static;
+        width: auto;
+        margin: 1rem;
+        max-height: none;
+    }
+
+    .main-content {
+        margin: 2rem 1rem;
+    }
+
+        #news-panel {
+            position: static;
+            width: auto;
+            max-height: none;
+            margin: 1rem 0;
+        }
+        
+}
+

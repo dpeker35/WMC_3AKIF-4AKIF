@@ -62,11 +62,34 @@
             <!-- Hesaplama sonuçları burada JS tarafından görüntülenecek -->
         </div>
     </div>
+<!-- Sol Üst Panel: Astronomy Picture of the Day (APOD) -->
+<div id="apod-panel" class="widget-panel">
+    <h5>🌌 Günün Astronomi Fotoğrafı</h5>
+    <button id="apod-btn" class="btn btn-sm btn-primary">Yenile</button>
+    <div id="apod-result"></div>
+</div>
 
-    <!-- Bootstrap JS Bundle (with Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Matrix Calculation JS -->
-    <script src="js/matrix.js"></script>
+<!-- Sol Alt Panel: Mars Rover Photos -->
+<div id="mars-panel" class="widget-panel">
+    <h5>🔴 Mars Rover Fotoğrafları</h5>
+    <input type="number" id="mars-sol-input" class="form-control form-control-sm" placeholder="Sol günü (örn. 1000)"
+        min="0" />
+    <button id="mars-btn" class="btn btn-sm btn-success">Getir</button>
+    <div id="mars-result"></div>
+</div>
+
+<!-- Sağ Üst Panel: NASA Haberleri -->
+<div id="news-panel" class="widget-panel">
+    <h5>🚀 NASA Haberleri</h5>
+    <div id="news-result"></div>
+</div>
+
+
+<!-- Bootstrap JS Bundle (with Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Todo List JS -->
+<script src="js/matrix.js"></script>
+<script src="js/sidebar.js"></script>
 </body>
 
 </html>
