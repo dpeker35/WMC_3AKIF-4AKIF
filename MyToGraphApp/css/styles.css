@@ -3,7 +3,7 @@
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
-/* Temel Sıfırlama */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -52,13 +52,12 @@ body {
 
 .navbar-nav .nav-link:hover {
     color: #ffdcdc !important;
-    /* Hover için daha açık bir ton */
+    /*lighter shade for hover */
 }
 
-/* Logo Görseli */
+/* Logo image */
 .logo-img {
     height: 40px;
-    /* İsteğe bağlı boyut */
     width: auto;
 }
 
@@ -84,8 +83,8 @@ h2 {
     margin-bottom: 50px;
 }
 
-/* To-Do Listesi */
-/* Form ve input alanları */
+/* To-Do List */
+/* Form and input parts */
 #todo-form {
     margin-bottom: 20px;
 }
@@ -101,7 +100,7 @@ h2 {
 #todo-input:focus {
     outline: none;
     border-color: #ff2b2b;
-    /* Daha canlı kırmızı */
+    /* A more vibrant red */
     background-color: #fff;
 }
 
@@ -118,7 +117,7 @@ h2 {
     border-color: #cc0000;
 }
 
-/* Yapılacaklar listesi elemanları */
+/* To-do list items */
 .list-group-item {
     display: flex;
     align-items: center;
@@ -133,20 +132,20 @@ h2 {
 
 .list-group-item:hover {
     background-color: #ffe5e5;
-    /* Hafif kırmızı ton */
+    /* light red color */
 }
 
-/* Butonlardaki ikonlar */
+/* icons on button */
 .btn-icon {
     width: 18px;
     height: 18px;
     object-fit: contain;
     margin-right: 4px;
-    /* Metinle arada küçük boşluk */
+    /* Small gap between the text*/
     vertical-align: middle;
 }
 
-/* Matris Hesaplama Bölümü */
+/* Matric CAlucation part */
 #matrix-section {
     margin-top: 40px;
 }
@@ -207,7 +206,7 @@ h2 {
     color: #333;
 }
 
-/* 1. Ortadaki içerik bloğu: sol/sağ 260px boşluk bırakarak */
+/* 1. The central content block: leaving 260px space on the left and right */
 .main-content {
     margin: 1rem 280px;
     background: #fff;
@@ -217,7 +216,7 @@ h2 {
     min-height: calc(100vh - 80px);
 }
 
-/* Ortak widget stili */
+/* Common widget style*/
 .widget-panel {
     position: fixed;
     width: 220px;
@@ -233,7 +232,7 @@ h2 {
     overflow: hidden;
 }
 
-/* Başlıklara renkli alt çizgi */
+/* colorful heading line */
 .widget-panel h5 {
     margin: 0;
     font-size: 1.1rem;
@@ -253,7 +252,7 @@ h2 {
     border-radius: 2px;
 }
 
-/* İnput ve butonlar */
+/* İnput and buttons */
 .widget-panel input,
 .widget-panel button {
     width: 100%;
@@ -264,7 +263,7 @@ h2 {
     font-weight: 500;
 }
 
-/* ===== Sol Üst: APOD ===== */
+/* Left top :APOD */
 #apod-panel {
     top: 80px;
     left: 1rem;
@@ -300,7 +299,7 @@ h2 {
     margin-bottom: 0.5rem;
 }
 
-/* ===== Sol Alt: Mars Rover ===== */
+/*left bottom: MARS Rover Photos*/
 #mars-panel {
     top: 450px;
     left: 1rem;
@@ -336,14 +335,13 @@ h2 {
     margin-bottom: 0.5rem;
 }
 
-/* ─────────────────────────────────────────────
-   📰 NASA Haberleri Paneli
-───────────────────────────────────────────── */
+/* 
+   NASA News */
 #news-panel {
     top: 80px;
-    /* Navbar’ın hemen altında */
+    /* below Navbar */
     right: 1rem;
-    /* Sağdan 1rem */
+    /* right 1rem from the edge */
     width: 260px;
     max-height: 400px;
     overflow-y: auto;
@@ -352,7 +350,7 @@ h2 {
     padding: 1rem;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     border-top: 4px solid #444;
-    /* koyu gri çizgi */
+    /* dark grey line*/
     position: fixed;
     z-index: 1000;
 }
@@ -383,7 +381,7 @@ h2 {
 
 
 
-/* ===== Responsive (dar ekran) ===== */
+/* ===== Responsive (narrow window) ===== */
 @media (max-width: 1500px) {
     .widget-panel {
         position: static;

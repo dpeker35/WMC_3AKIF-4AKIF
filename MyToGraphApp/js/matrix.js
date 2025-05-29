@@ -17,22 +17,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (operation === "multiplication") {
       const labelA = document.createElement("label");
-      labelA.textContent = "Matrix A (her satır, virgülle ayrılmış sayılar; yeni satırda):";
+      labelA.textContent = "Matrix A (each row consists of comma-separated numbers; on a new line):";
       labelA.className = "form-label";
       const textareaA = document.createElement("textarea");
       textareaA.id = "matrixA";
       textareaA.className = "form-control mb-3";
       textareaA.rows = 4;
-      textareaA.placeholder = "Örnek:\n1,2,3\n4,5,6";
+      textareaA.placeholder = "Example:\n1,2,3\n4,5,6";
 
       const labelB = document.createElement("label");
-      labelB.textContent = "Matrix B (her satır, virgülle ayrılmış sayılar; yeni satırda):";
+      labelB.textContent = "Matrix B (each row contains comma-separated numbers; each on a new line):";
       labelB.className = "form-label";
       const textareaB = document.createElement("textarea");
       textareaB.id = "matrixB";
       textareaB.className = "form-control mb-3";
       textareaB.rows = 4;
-      textareaB.placeholder = "Örnek:\n7,8\n9,10\n11,12";
+      textareaB.placeholder = "Example:\n7,8\n9,10\n11,12";
 
       matrixInputsDiv.appendChild(labelA);
       matrixInputsDiv.appendChild(textareaA);
@@ -41,15 +41,15 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       const label = document.createElement("label");
       if (operation === "adjacency") {
-        label.textContent = "Graf Kenarlarını Girin (her satıra bir kenar, örn: 1-2):";
+        label.textContent = "Enter Graph Edges (one edge per line, e.g.: 1-2):";
       } else if (operation === "path") {
-        label.textContent = "Yol Matrisi için Adjacency Matrix (kare, 0 ve 1 değerleri):";
+        label.textContent = "Adjacency Matrix for Path Matrix (square, with 0 and 1 values):";
       } else if (operation === "distance") {
-        label.textContent = "Mesafe Matrisi için (kenar varsa 1, yoksa 0 girin):";
+        label.textContent = "For Distance Matrix (enter 1 if there is an edge, 0 if there isn't):";
       } else if (operation === "eccentricity") {
-        label.textContent = "Yarıçap/Çap Hesaplama için Mesafe Matrisi (kenar varsa 1, yoksa 0):";
+        label.textContent = "Distance Matrix for Radius/Diameter Calculation (1 if there is an edge, 0 if not):";
       } else if (operation === "components") {
-        label.textContent = "Bağlantı Bileşenleri için Adjacency Matrix (kare, 0 ve 1 değerleri):";
+        label.textContent = "Adjacency Matrix for Connected Components (square matrix with 0 and 1 values):";
       }
       label.className = "form-label";
       const textarea = document.createElement("textarea");
@@ -57,8 +57,8 @@ document.addEventListener("DOMContentLoaded", () => {
       textarea.className = "form-control mb-3";
       textarea.rows = 4;
       textarea.placeholder = (operation === "adjacency")
-        ? "Örnek:\n1-2\n2-5\n3-4"
-        : "Örnek:\n0,1,0\n1,0,1\n0,1,0";
+        ? "Example:\n1-2\n2-5\n3-4"
+        : "Example:\n0,1,0\n1,0,1\n0,1,0";
       matrixInputsDiv.appendChild(label);
       matrixInputsDiv.appendChild(textarea);
     }
@@ -75,10 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const matrixA = parseMatrix(matrixAText);
         const matrixB = parseMatrix(matrixBText);
         if (matrixA[0].length !== matrixB.length) {
-          throw new Error("Matris çarpımı için, Matrix A'nın sütun sayısı, Matrix B'nin satır sayısına eşit olmalıdır.");
+          throw new Error("For matrix multiplication, the number of columns in Matrix A must be equal to the number of rows in Matrix B.");
         }
         const product = multiplyMatrices(matrixA, matrixB);
-        matrixResultDiv.innerHTML = `<strong>Çarpım Sonucu:</strong><br>${formatMatrix(product)}`;
+        matrixResultDiv.innerHTML = `<strong>Multiplication Result:</strong><br>${formatMatrix(product)}`;
       } catch (error) {
         matrixResultDiv.innerHTML = `<span class="text-danger">${error.message}</span>`;
       }
@@ -109,8 +109,8 @@ document.addEventListener("DOMContentLoaded", () => {
           matrix[j][i] = 1;
         });
 
-        matrixResultDiv.innerHTML = `<strong>Düğümler:</strong> [${nodes.join(", ")}]
-<strong>Komşuluk Matrisi:</strong><br>${formatMatrix(matrix)}`;
+        matrixResultDiv.innerHTML = `<strong>Nodes:</strong> [${nodes.join(", ")}]
+<strong>Adjacency Matrix:</strong><br>${formatMatrix(matrix)}`;
       } catch (error) {
         matrixResultDiv.innerHTML = `<span class="text-danger">${error.message}</span>`;
       }
@@ -120,20 +120,20 @@ document.addEventListener("DOMContentLoaded", () => {
         const matrix = parseMatrix(matrixText);
         if (operation === "path") {
           const pathMatrix = computePathMatrix(matrix);
-          matrixResultDiv.innerHTML = `<strong>Yol Matrisi (Transitive Closure):</strong><br>${formatMatrix(pathMatrix)}`;
+          matrixResultDiv.innerHTML = `<strong>Path Matrix (Transitive Closure):</strong><br>${formatMatrix(pathMatrix)}`;
         } else if (operation === "distance") {
           const distMatrix = computeDistanceMatrix(matrix);
-          matrixResultDiv.innerHTML = `<strong>Mesafe Matrisi:</strong><br>${formatMatrixWithInfinity(distMatrix)}`;
+          matrixResultDiv.innerHTML = `<strong>Distance Matrix:</strong><br>${formatMatrixWithInfinity(distMatrix)}`;
         } else if (operation === "eccentricity") {
           const distMatrix = computeDistanceMatrix(matrix);
           const ecc = computeEccentricities(distMatrix);
           const radius = Math.min(...ecc.filter(val => val < Infinity));
           const diameter = Math.max(...ecc.filter(val => val < Infinity));
-          matrixResultDiv.innerHTML = `<strong>Eksantriklikler:</strong><br>${ecc.join(", ")}<br><strong>Yarıçap (Radius):</strong> ${radius}<br><strong>Çap (Diameter):</strong> ${diameter}`;
+          matrixResultDiv.innerHTML = `<strong>Eccentricities:</strong><br>${ecc.join(", ")}<br><strong>(Radius):</strong> ${radius}<br><strong>Diameter:</strong> ${diameter}`;
         } else if (operation === "components") {
           const pathMatrix = computePathMatrix(matrix);
           const components = computeComponents(pathMatrix);
-          matrixResultDiv.innerHTML = `<strong>Bağlantı Bileşenleri:</strong><br>${components.map((comp, idx) => `Bileşen ${idx + 1}: [${comp.join(", ")}]`).join("<br>")}`;
+          matrixResultDiv.innerHTML = `<strong>Connected Components:</strong><br>${components.map((comp, idx) => `Component ${idx + 1}: [${comp.join(", ")}]`).join("<br>")}`;
         }
       } catch (error) {
         matrixResultDiv.innerHTML = `<span class="text-danger">${error.message}</span>`;
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rows = text.split("\n").filter(row => row.trim() !== "");
     return rows.map(row => row.split(",").map(val => {
       const num = parseFloat(val.trim());
-      if (isNaN(num)) throw new Error("Matris değerleri geçerli sayılar olmalıdır.");
+      if (isNaN(num)) throw new Error("Matrix values must be valid numbers.");
       return num;
     }));
   }

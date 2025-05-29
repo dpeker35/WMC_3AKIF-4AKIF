@@ -1,17 +1,17 @@
 // js/todo.js
 
 document.addEventListener("DOMContentLoaded", () => { //wichtig für js, DOM: document object model,
-    // API URL (Deno sunucusu port 8000'de çalışıyorsa)
+    // API URL "(If the Deno server is running on port 8000)"
     const API_URL = "http://localhost:8000/todos"; //hier arbeitet unser server, unser API läuft hier! const --> fixiert
   
-    // DOM elemanlarını yakala
+    // Capture DOM elements
     const todoForm = document.getElementById("todo-form"); //damit wir etwas 'add' können
     const todoInput = document.getElementById("todo-input"); //hier schreiben wir den input rein
     const todoList = document.getElementById("todo-list"); 
   
     fetchTodos(); //fetch heisst bringen, bring die existierende todos
   
-    // Form submit olduğunda yeni todo ekle
+    // Add a new to-do when the form is submitted
     todoForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const text = todoInput.value.trim();
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => { //wichtig für js, DOM: do
           renderTodo(todo); //hier wirds gelistet im server
           document.getElementById("todo-section").scrollIntoView({ behavior: "smooth" });
         })
-        .catch((error) => console.error("Error adding todo:", error)); //wenn eine Fehlermeldung kommt, kommt dieser Text
+        .catch((error) => console.error("Error adding todo:", error)); //wenn eine Fehlermeldung kommt, kommt dieser Text (de Fehler wird gefangen!)
     }
   
     function renderTodo(todo) { //rendertodo bringt die daten
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => { //wichtig für js, DOM: do
       completeBtn.addEventListener("click", () => toggleComplete(todo, span, completeBtn));
       btnContainer.appendChild(completeBtn);
   
-      // Edit butonu
+      // Edit button
       const editBtn = document.createElement("button");
       editBtn.className = "btn btn-sm btn-warning me-2"; //style farbe von bootstrap
       editBtn.innerHTML = `
@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => { //wichtig für js, DOM: do
       editBtn.addEventListener("click", () => editTodo(todo, span, editBtn));
       btnContainer.appendChild(editBtn);
   
-      // Delete butonu
+      // Delete button
       const deleteBtn = document.createElement("button");
       deleteBtn.className = "btn btn-sm btn-danger"; //sytle vom bootstrap
       deleteBtn.innerHTML = `

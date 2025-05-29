@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Planet Shortest Path with Dijkstra & Edge Icons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 1rem;
+            background: #111;
+            color: #eee;
+            text-align: center;
+        }
+
+        #graph {
+            position: relative;
+            width: 600px;
+            height: 400px;
+            margin: 1rem auto;
+            background: #222;
+            border-radius: 10px;
+        }
+
+        .node {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #444;
+            border: 3px solid #888;
+            cursor: pointer;
+            user-select: none;
+            font-weight: bold;
+            color: #eee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, border-color 0.3s;
+            font-size: 12px;
+        }
+
+        .node .icon {
+            font-size: 28px;
+            /* bigger emoji icon */
+            margin-bottom: 2px;
+        }
+
+        .node.selected {
+            background: #1e90ff;
+            border-color: #00f;
+        }
+
+        .node.path {
+            background: #0f0;
+            border-color: #0a0;
+        }
+
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            width: 600px;
+            height: 400px;
+        }
+
+        line.edge {
+            stroke: #555;
+            stroke-width: 3;
+        }
+
+        line.edge.path {
+            stroke: #0f0;
+            stroke-width: 5;
+        }
+
+        text.edge-label {
+            fill: #ccc;
+            font-size: 12px;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        select,
+        button {
+            margin: 0.5rem;
+            font-size: 1rem;
+            padding: 0.3rem 0.6rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Planet Shortest Path Finder (Dijkstra) with Edge Icons</h1>
+
+    <div>
+        Start:
+        <select id="start-select"></select>
+        End:
+        <select id="end-select"></select>
+        <button id="find-path">Find Shortest Path</button>
+    </div>
+
+    <div id="graph"></div>
+    <svg id="edges"></svg>
+
+    <script>
+        // Node positions
+        const nodes = {
+            Earth: { x: 100, y: 200 },
+            Mars: { x: 250, y: 100 },
+            Venus: { x: 200, y: 300 },
+            Mercury: { x: 80, y: 100 },
+            Jupiter: { x: 400, y: 150 },
+            Saturn: { x: 520, y: 250 }
+        };
+
+        // Graph edges with distances
+        const graph = {
+            Earth: { Mars: 78, Venus: 41 },
+            Mars: { Earth: 78, Jupiter: 550 },
+            Venus: { Earth: 41, Mercury: 50 },
+            Mercury: { Venus: 50 },
+            Jupiter: { Mars: 550, Saturn: 650 },
+            Saturn: { Jupiter: 650 }
+        };
+
+        // Emoji icons for planets
+        const icons = {
+            Earth: '🌍',
+            Mars: '🔴',
+            Venus: '♀️',
+            Mercury: '☿️',
+            Jupiter: '♃',
+            Saturn: '🪐',
+        };
+
+        // Emoji icons for edges (by combined node names)
+        const edgeIcons = {
+            'Earth-Mars': '🚀',
+            'Mars-Earth': '🚀',
+            'Mars-Jupiter': '🪐',
+            'Jupiter-Mars': '🪐',
+            'Venus-Mercury': '☿️',
+            'Mercury-Venus': '☿️',
+            'Jupiter-Saturn': '🪐',
+            'Saturn-Jupiter': '🪐',
+            'Earth-Venus': '♀️',
+            'Venus-Earth': '♀️'
+        };
+
+        const graphContainer = document.getElementById('graph');
+        const svg = document.getElementById('edges');
+        const startSelect = document.getElementById('start-select');
+        const endSelect = document.getElementById('end-select');
+        const findPathBtn = document.getElementById('find-path');
+
+        const nodeElements = {};
+
+        // Create planet nodes with emoji icons and names
+        for (const [name, pos] of Object.entries(nodes)) {
+            const div = document.createElement('div');
+            div.className = 'node';
+            div.style.left = pos.x + 'px';
+            div.style.top = pos.y + 'px';
+
+            const iconSpan = document.createElement('span');
+            iconSpan.className = 'icon';
+            iconSpan.textContent = icons[name] || '❓';
+            div.appendChild(iconSpan);
+
+            const labelSpan = document.createElement('span');
+            labelSpan.textContent = name;
+            div.appendChild(labelSpan);
+
+            graphContainer.appendChild(div);
+            nodeElements[name] = div;
+
+            // Add to start/end selectors
+            const optionStart = document.createElement('option');
+            optionStart.value = name;
+            optionStart.textContent = name;
+            startSelect.appendChild(optionStart);
+
+            const optionEnd = document.createElement('option');
+            optionEnd.value = name;
+            optionEnd.textContent = name;
+            endSelect.appendChild(optionEnd);
+        }
+
+        // Draw edges and distance labels, highlight path edges if provided
+        function drawEdges(path = []) {
+            while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+            for (const [from, edges] of Object.entries(graph)) {
+                const fromPos = nodes[from];
+                for (const [to, dist] of Object.entries(edges)) {
+                    const toPos = nodes[to];
+
+                    // Draw the line
+                    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                    line.setAttribute('x1', fromPos.x + 30);
+                    line.setAttribute('y1', fromPos.y + 30);
+                    line.setAttribute('x2', toPos.x + 30);
+                    line.setAttribute('y2', toPos.y + 30);
+
+                    const isPathEdge = path.some((p, i) => {
+                        if (i === path.length - 1) return false;
+                        return (p === from && path[i + 1] === to) || (p === to && path[i + 1] === from);
+                    });
+
+                    line.classList.add('edge');
+                    if (isPathEdge) line.classList.add('path');
+
+                    svg.appendChild(line);
+
+                    // Distance label
+                    const midX = (fromPos.x + toPos.x) / 2 + 30;
+                    const midY = (fromPos.y + toPos.y) / 2 + 25;
+
+                    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    text.setAttribute('x', midX);
+                    text.setAttribute('y', midY);
+                    text.setAttribute('class', 'edge-label');
+                    text.textContent = dist;
+                    svg.appendChild(text);
+
+                    // Edge icon label (offset above distance label)
+                    const iconText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    iconText.setAttribute('x', midX);
+                    iconText.setAttribute('y', midY - 15);
+                    iconText.setAttribute('class', 'edge-label');
+                    iconText.setAttribute('font-size', '18');
+                    iconText.textContent = edgeIcons[`${from}-${to}`] || '✨';
+                    svg.appendChild(iconText);
+                }
+            }
+        }
+
+        // Dijkstra's algorithm
+        function dijkstra(graph, start, end) {
+            const distances = {};
+            const visited = new Set();
+            const previous = {};
+            const queue = new Set(Object.keys(graph));
+
+            for (const node of queue) {
+                distances[node] = Infinity;
+            }
+            distances[start] = 0;
+
+            while (queue.size > 0) {
+                let currentNode = null;
+                let smallestDistance = Infinity;
+
+                for (const node of queue) {
+                    if (distances[node] < smallestDistance) {
+                        smallestDistance = distances[node];
+                        currentNode = node;
+                    }
+                }
+
+                if (currentNode === null) break;
+                if (currentNode === end) break;
+
+                queue.delete(currentNode);
+                visited.add(currentNode);
+
+                for (const neighbor in graph[currentNode]) {
+                    if (!visited.has(neighbor)) {
+                        const newDist = distances[currentNode] + graph[currentNode][neighbor];
+                        if (newDist < distances[neighbor]) {
+                            distances[neighbor] = newDist;
+                            previous[neighbor] = currentNode;
+                        }
+                    }
+                }
+            }
+
+            const path = [];
+            let current = end;
+            while (current) {
+                path.unshift(current);
+                current = previous[current];
+            }
+
+            if (path[0] !== start) return null;
+            return { path, distance: distances[end] };
+        }
+
+        // Highlight nodes in path
+        function highlightPath(path) {
+            for (const node of Object.values(nodeElements)) {
+                node.classList.remove('path');
+                node.classList.remove('selected');
+            }
+            if (path) {
+                for (const node of path) {
+                    nodeElements[node].classList.add('path');
+                }
+            }
+        }
+
+        drawEdges();
+
+        findPathBtn.addEventListener('click', () => {
+            const start = startSelect.value;
+            const end = endSelect.value;
+            if (start === end) {
+                alert('Please choose two different planets.');
+                return;
+            }
+
+            const result = dijkstra(graph, start, end);
+            if (!result) {
+                alert('No path found!');
+                highlightPath(null);
+                drawEdges();
+                return;
+            }
+            highlightPath(result.path);
+            drawEdges(result.path);
+            alert(`Shortest path: ${result.path.join(' → ')}\nTotal distance: ${result.distance} million km`);
+        });
+    </script>
+
+</body>
+
+</html>

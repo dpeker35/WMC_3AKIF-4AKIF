@@ -1,4 +1,4 @@
-// server.ts (Deno ile basit JSON API örneği - CORS destekli)
+// "server.ts (Simple JSON API example with Deno – CORS supported))
 import { getQuote } from "./quote.ts";
 import { serve } from "https://deno.land/std@0.203.0/http/server.ts"; //library von deno
 
@@ -7,7 +7,7 @@ let todos: any[] = []; //innerhalb von todo wird eine list erstellt
 const handler = async (req: Request): Promise<Response> => {
   const url = new URL(req.url);
 
-  // CORS preflight isteği için OPTIONS kontrolü
+  //OPTIONS check for CORS preflight request"
   if (req.method === "OPTIONS") {
     return new Response(null, {
       status: 204,
@@ -19,15 +19,15 @@ const handler = async (req: Request): Promise<Response> => {
     });
   }
 
-  // Ortak header'lar
+  // Common header
   const headers = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
   };
 
-  // Root endpoint: Hoş geldiniz mesajı
+  // Root endpoint: Welcome message
   if (req.method === "GET" && url.pathname === "/") {
-    return new Response("Welcome! /todos endpoint'ini kullanın.", {
+    return new Response("Welcome! /Use the todos endpoint.", {
       headers: { "Content-Type": "text/plain", "Access-Control-Allow-Origin": "*" },
     });
   }
@@ -38,12 +38,12 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(JSON.stringify(quote), { headers });
   }
 
-  // GET /todos: Tüm to-do'ları döndür
+  // GET /todos: "Return all to-dos"
   if (req.method === "GET" && url.pathname === "/todos") {
     return new Response(JSON.stringify(todos), { headers });
   }
 
-  // POST /todos: Yeni to-do ekle
+  // POST /todos: Add a new to do
   else if (req.method === "POST" && url.pathname === "/todos") {
     const body = await req.json();
     body.id = Date.now();
@@ -51,7 +51,7 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(JSON.stringify(body), { headers, status: 201 });
   }
 
-  // PATCH /todos/:id: Mevcut to-do güncelle
+  // PATCH /todos/:id: update todo
   else if (req.method === "PATCH" && url.pathname.startsWith("/todos/")) {
     const id = Number(url.pathname.split("/")[2]);
     const index = todos.findIndex((t) => t.id === id);
@@ -61,7 +61,7 @@ const handler = async (req: Request): Promise<Response> => {
     return new Response(JSON.stringify(todos[index]), { headers });
   }
 
-  // DELETE /todos/:id: To-do sil
+  // DELETE /todos/:id: delete to-do
   else if (req.method === "DELETE" && url.pathname.startsWith("/todos/")) {
     const id = Number(url.pathname.split("/")[2]);
     todos = todos.filter((t) => t.id !== id);
